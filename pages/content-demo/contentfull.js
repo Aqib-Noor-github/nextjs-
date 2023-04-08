@@ -11,6 +11,7 @@ export async function getStaticProps() {
     props: {
       items: entries.items,
     },
+    revalidate: 3600,
   };
 }
 

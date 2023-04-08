@@ -151,6 +151,70 @@
   background-clip: content-box;
 }
 
+.mainSection{
+  /* border: 1px solid aqua; */
+  width: 50%;
+  border-radius: 16px;
+  margin: auto;
+
+}
+.mainSectiontitle{
+  color: #4750d9;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 44px;
+  font-weight: 100;
+}
+.mainSectionfields{
+  /* border: 1px solid white; */
+  width: 50%;
+  margin: auto;
+  text-align: left;
+}
+.mainSectionUserName{
+  color: white;
+  font-size: 24px;
+  font-weight: 100;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.mainSectionPassword{
+  color: white;
+  font-size: 24px;
+  font-weight: 100;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.mainSectionInput {
+    width: 100%;
+    height: 33px;
+    border-radius: 35px;
+    border: none;
+    margin-left: 7px;
+    padding: 8px;
+    color: white;
+    background: #d4cbcb;
+}
+.mainSectioBottom{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 23px;
+  color: #6d6dd0;
+}
+.mainSectionButtondiv{
+   text-align: center;
+
+}
+.mainSectionButton{
+  width: 44%;
+    margin-top: 20px;
+  
+    border-radius: 15px;
+}
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
