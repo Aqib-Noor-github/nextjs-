@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import MyComponent from "./fetchjson";
 export default function aboutlayout() {
   return (

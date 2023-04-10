@@ -215,6 +215,27 @@
   
     border-radius: 15px;
 }
+.mainDiv{
+  position: relative;
+  width: 1440px;
+  height: 300px;
+  
+  /* Neutral/1 */
+  
+  /* background: #FFFFFF; */
+}
+.signUpContent{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+}
+.buttons{
+  display: flex;
+  /* justify-content: space-around; */
+}
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
