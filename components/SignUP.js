@@ -61,8 +61,8 @@ export default function SignUP() {
           <div className="rightImage">
             <div className="rightImg"> </div>
             <div className="rightImageText">
-              "Good design is not just what looks good. It also needs to
-              perform, convert, astonish, and fulfill its purpose."
+              Good design is not just what looks good. It also needs to perform,
+              convert, astonish, and fulfill its purpose.
               <div className="textAuthor">Ahmed - Brand Designer</div>
             </div>
           </div>
