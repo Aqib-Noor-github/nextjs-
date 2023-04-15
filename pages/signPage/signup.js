@@ -64,7 +64,7 @@
 // };
 
 // export default SignUp;
-import SignUP from "../../../components/SignUP";
+import SignUP from "../../components/signUP";
 
 function Signup() {
   return (

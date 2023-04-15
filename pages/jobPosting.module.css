@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  gap: 6rem;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: "1.3rem";
+}
+.uploadBtn {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+.steps {
+  position: relative;
+  top: 5rem;
+  left: 5rem;
+}
+
+.span {
+  color: #1d8ea4;
+}
+.radioText {
+  margin-left: 1.5rem;
+  color: rgba(0, 0, 0, 0.45);
+}

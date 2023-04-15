@@ -19,7 +19,7 @@ function Home() {
         <Link href="/content-demo/contentfull">
           <Button type="primary">Primary Button</Button>
         </Link>
-        <Link href="/content-demo/signPage/signup">
+        <Link href="/signPage/signup">
           <Button type="primary">Sign UP</Button>
         </Link>
       </main>
