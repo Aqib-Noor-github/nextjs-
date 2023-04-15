@@ -219,7 +219,7 @@ export default function JopPosting() {
                 Back
               </Button>
               <Button size="large" onClick={contineu}>
-                Continue
+                Next buget
               </Button>
             </div>
           </div>
