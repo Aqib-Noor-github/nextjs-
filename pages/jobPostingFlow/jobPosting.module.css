@@ -19,9 +19,7 @@
   align-items: baseline;
 }
 .steps {
-  position: relative;
-  top: 5rem;
-  left: 5rem;
+  margin: 2rem;
 }
 
 .span {

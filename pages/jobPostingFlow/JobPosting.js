@@ -16,7 +16,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import styles from "./jobPosting.module.css";
 
-export default function JopPosting() {
+export default function JopPosting({ nextForm, next }) {
+  console.log(next);
   let [step, setStep] = useState(1);
   const contineu = () => {
     let stepNo = step + 1;
@@ -24,9 +25,10 @@ export default function JopPosting() {
     setStep(stepNo);
   };
   const back = () => {
-    let stepNo = step - 1;
-
-    setStep(stepNo);
+    if (step > 1) {
+      let stepNo = step - 1;
+      setStep(stepNo);
+    }
   };
 
   const data = [
@@ -138,9 +140,8 @@ export default function JopPosting() {
                 <Paragraph style={{ maxWidth: "28rem" }}>
                   What level of experience is required for your
                   <span className={styles.span}> UX/UI Design </span>
-                  job?{" "}
+                  job?
                   <span style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                    {" "}
                     You will still receive proposals from freelancers having
                     different level of expertise. But this helps us in matching
                     your job with the right freelancers.
@@ -199,17 +200,27 @@ export default function JopPosting() {
               What is the estimated duration of your project?
             </Text>
 
-            <Radio.Group>
+            <Radio.Group style={{ marginTop: "2rem" }}>
               <Space direction="vertical">
-                <Radio value={1}>Beginner (Relatively new)</Radio>
+                <Radio value={1}>
+                  More then 6 months (Large and complex project)
+                </Radio>
 
-                <Radio value={2}>Intermediate (Notable experience)</Radio>
+                <Radio value={2}>3 to 6 months (Medium project)</Radio>
 
-                <Radio value={3}>Expert (In-depth experience)</Radio>
+                <Radio value={3}>
+                  1 to 3 months (Small project or quick fix)
+                </Radio>
               </Space>
             </Radio.Group>
             <Button
-              style={{ marginBottom: "2rem", border: "none", color: "blue" }}
+              style={{
+                marginTop: "10rem",
+                marginBottom: "2rem",
+                border: "none",
+                color: "blue",
+                maxWidth: "10rem",
+              }}
             >
               See examples of great jobs
             </Button>
@@ -218,7 +229,15 @@ export default function JopPosting() {
               <Button size="large" onClick={back}>
                 Back
               </Button>
-              <Button size="large" onClick={contineu}>
+              <Button
+                size="large"
+                onClick={nextForm}
+                style={{
+                  marginBottom: "0rem",
+                  background: "#1D8EA4",
+                  color: "white",
+                }}
+              >
                 Next buget
               </Button>
             </div>
