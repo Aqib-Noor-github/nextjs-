@@ -9,7 +9,7 @@ export default function Document() {
           rel="stylesheet"
         ></link>
       </Head>
-      <body>
+      <body style={{ margin: "0rem" }}>
         <Main />
         <NextScript />
       </body>

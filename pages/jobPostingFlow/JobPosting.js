@@ -8,10 +8,19 @@ import {
   Tag,
   Space,
   Radio,
+  Row,
+  Col,
+  Divider,
 } from "antd";
 const { Title, Text, Paragraph } = Typography;
 const { TextArea, Search } = Input;
-import { UploadOutlined } from "@ant-design/icons";
+import {
+  UploadOutlined,
+  HomeOutlined,
+  MessageOutlined,
+  HeartOutlined,
+  BellOutlined,
+} from "@ant-design/icons";
 
 import { useState } from "react";
 import styles from "./jobPosting.module.css";
@@ -20,14 +29,12 @@ export default function JopPosting({ nextForm, next }) {
   console.log(next);
   let [step, setStep] = useState(1);
   const contineu = () => {
-    let stepNo = step + 1;
-
-    setStep(stepNo);
+    setStep(step + 1);
   };
+
   const back = () => {
     if (step > 1) {
-      let stepNo = step - 1;
-      setStep(stepNo);
+      setStep(step - 1);
     }
   };
 
@@ -41,63 +48,101 @@ export default function JopPosting({ nextForm, next }) {
     case 1:
       return (
         <>
-          <div style={{ marginTop: "4rem" }}>
-            <Title strong-level={2}>Tell Us About Your Job Opportunity</Title>
-            <div>
-              <Form layout="vertical">
-                <Form.Item label="Title">
-                  <Input placeholder="e.g ML Pipeline Manager" />
-                  <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                    Help freelancers identify the job type.
-                  </Text>
-                </Form.Item>
-              </Form>
-              <List
-                size="large"
-                header={<div>Description</div>}
-                dataSource={data}
-                renderItem={(item) => (
-                  <List.Item style={{ borderBottom: "none" }}>{item}</List.Item>
-                )}
-              />
-              <div style={{ marginTop: "2rem" }}>
-                <Text> Description</Text>
+          <div className={styles.jobSection}>
+            <Title
+              level={3}
+              style={{ marginTop: "0rem", marginBottom: "1.5rem" }}
+            >
+              Tell Us About Your Job Opportunity
+            </Title>
+
+            <Form layout="vertical">
+              <Form.Item label="Title">
+                <Input
+                  placeholder="e.g ML Pipeline Manager"
+                  style={{ marginBottom: ".5rem" }}
+                />
+                <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+                  Help freelancers identify the job type.
+                </Text>
+              </Form.Item>
+            </Form>
+            <List
+              size="large"
+              header={<div style={{ fontWeight: "500" }}>Example titles</div>}
+              dataSource={data}
+              renderItem={(item) => (
+                <List.Item
+                  style={{ borderBottom: "none", paddingBottom: ".3rem" }}
+                >
+                  {item}
+                </List.Item>
+              )}
+            />
+            <Form layout="vertical" className={styles.form}>
+              <Form.Item label="Description">
                 <TextArea
                   showCount
                   maxLength={5000}
-                  style={{ height: 120, marginBottom: 24 }}
-                  //   onChange={onChange}
+                  style={{ height: 120, marginBottom: "1.5rem" }}
                   placeholder="Give a brief job description, including the primary responsibilities
                  and required qualifications."
                 />
-              </div>
-              <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+              </Form.Item>
+              <Text className={styles.discriptionText}>
                 Help freelancers understand your job by including necessary
                 information of your job.
               </Text>
+            </Form>
 
-              <div className={styles.uploadBtn}>
-                <Upload>
-                  <Button icon={<UploadOutlined />}> Upload</Button>
-                </Upload>
-                <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                  Max size 100MB
-                </Text>
-              </div>
-              <Button
-                style={{ marginBottom: "2rem", border: "none", color: "blue" }}
-              >
-                See examples of great jobs
+            {/* icon for mobile   */}
+
+            <div className={styles.mobileDisplay}>
+              <Divider style={{ marginBottom: ".7rem" }}></Divider>
+              <Row>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HomeOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <MessageOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <BellOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HeartOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+              </Row>
+            </div>
+
+            {/* end */}
+
+            <div className={styles.button}>
+              <Upload>
+                <Button icon={<UploadOutlined />}> Upload files</Button>
+              </Upload>
+              <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+                Max size 100MB
+              </Text>
+            </div>
+
+            <Button
+              style={{
+                marginBottom: "2rem",
+                border: "none",
+                marginLeft: "-1rem",
+              }}
+            >
+              <Text className={styles.btnText}>See examples of great jobs</Text>
+            </Button>
+
+            <div className={styles.button} style={{ justifyContent: "end" }}>
+              <Button size="large" onClick={back}>
+                Back
               </Button>
-
-              <div className={styles.btn}>
-                <Button size="large" onClick={back}>
-                  Back
-                </Button>
-                <Button size="large" onClick={contineu}>
-                  Continue
-                </Button>
-              </div>
+              <Button size="large" disabled onClick={contineu}>
+                Continue
+              </Button>
             </div>
           </div>
         </>
