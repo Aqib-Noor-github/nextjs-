@@ -13,20 +13,20 @@ import {
   Divider,
 } from "antd";
 const { Title, Text, Paragraph } = Typography;
-const { TextArea, Search } = Input;
+const { TextArea } = Input;
 import {
   UploadOutlined,
   HomeOutlined,
   MessageOutlined,
   HeartOutlined,
   BellOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
 
 import { useState } from "react";
 import styles from "./jobPosting.module.css";
 
-export default function JopPosting({ nextForm, next }) {
-  console.log(next);
+export default function JopPosting({ nextForm }) {
   let [step, setStep] = useState(1);
   const contineu = () => {
     setStep(step + 1);
@@ -37,7 +37,6 @@ export default function JopPosting({ nextForm, next }) {
       setStep(step - 1);
     }
   };
-
   const data = [
     "  Graphic Designer for Social Media Ads.",
     "Experienced WordPress Developer for Custom Plugin Development.",
@@ -69,7 +68,7 @@ export default function JopPosting({ nextForm, next }) {
             </Form>
             <List
               size="large"
-              header={<div style={{ fontWeight: "500" }}>Example titles</div>}
+              header={<div>Example titles</div>}
               dataSource={data}
               renderItem={(item) => (
                 <List.Item
@@ -95,6 +94,32 @@ export default function JopPosting({ nextForm, next }) {
               </Text>
             </Form>
 
+            <div className={styles.button}>
+              <Upload listType="picture" className={styles.picWidth}>
+                <Button icon={<UploadOutlined />}>Upload files</Button>
+                <Text
+                  style={{ color: "rgba(0, 0, 0, 0.45)", marginLeft: "1rem" }}
+                >
+                  Max size 100MB
+                </Text>
+              </Upload>
+            </div>
+            <Button className={styles.textBtn}>
+              <Text className={styles.btnText}>See examples of great jobs</Text>
+            </Button>
+
+            <div className={styles.button} style={{ justifyContent: "end" }}>
+              <Button size="large" onClick={back} className={styles.bottmBtn}>
+                Back
+              </Button>
+              <Button
+                size="large"
+                onClick={contineu}
+                className={styles.bottmBtn}
+              >
+                Continue
+              </Button>
+            </div>
             {/* icon for mobile   */}
 
             <div className={styles.mobileDisplay}>
@@ -116,15 +141,104 @@ export default function JopPosting({ nextForm, next }) {
             </div>
 
             {/* end */}
+          </div>
+        </>
+      );
+    case 2:
+      return (
+        <>
+          <div className={styles.jobSection}>
+            <Title
+              level={3}
+              style={{ marginTop: "0rem", marginBottom: "1.5rem" }}
+            >
+              Skills and experience level
+            </Title>
 
-            <div className={styles.button}>
-              <Upload>
-                <Button icon={<UploadOutlined />}> Upload files</Button>
-              </Upload>
-              <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                Max size 100MB
-              </Text>
-            </div>
+            <Form layout="vertical">
+              <Form.Item label="Search skills or add your own">
+                <Input
+                  icon={<SearchOutlined />}
+                  placeholder="Start typing"
+                  style={{ marginBottom: ".5rem" }}
+                />
+                <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+                  For attracting freelancers select{" "}
+                  <span style={{ color: "#1D8EA4" }}> 3 to 5 </span> skills.
+                </Text>
+              </Form.Item>
+            </Form>
+
+            <Text>
+              Select skills required for
+              <span style={{ color: "#1D8EA4" }}> UX/UI Design </span> job
+            </Text>
+
+            <Space style={{ marginTop: ".5rem", flexWrap: "wrap" }}>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>Web Design</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>
+                User Interface Design
+              </Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>
+                User Experience Design
+              </Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>Typography</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>CMS</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>WordPress</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>Elementor</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>Figma</Tag>
+              <Tag style={{ backgroundColor: "#d5e3e3" }}>Adobe xd</Tag>
+            </Space>
+
+            <Title level={3} style={{ textAlign: "left" }}>
+              Experience Level
+            </Title>
+
+            <Paragraph>
+              <span style={{ display: "block" }}>
+                What level of experience is required for your
+                <span style={{ color: "#1D8EA4" }}> UX/UI Design </span>
+                job?
+              </span>
+              <span style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+                You will still receive proposals from freelancers having
+                different level of expertise. But this helps us in matching your
+                job with the right freelancers.
+              </span>
+            </Paragraph>
+
+            <Radio.Group style={{ marginBottom: "3rem", display: "block" }}>
+              <Space direction="vertical">
+                <Radio value={1} style={{ marginTop: "2rem" }}>
+                  Beginner (Relatively new)
+                </Radio>
+                <Text className={styles.radioText}>
+                  May have no to 2 years of experience
+                </Text>
+                <Text className={styles.radioText}>
+                  The estimated hourly rate is $10/hour to $20/hour
+                </Text>
+                <Radio value={2} style={{ marginTop: "1rem" }}>
+                  Intermediate (Notable experience)
+                </Radio>
+                <Text className={styles.radioText}>
+                  May have 2 to 5 years of experience
+                </Text>
+                <Text className={styles.radioText}>
+                  The estimated hourly rate is $20/hour to $30/hour
+                </Text>
+
+                <Radio value={3} style={{ marginTop: "1rem" }}>
+                  Expert (In-depth experience)
+                </Radio>
+                <Text className={styles.radioText}>
+                  May have 5 to 10+ years of experience
+                </Text>
+                <Text className={styles.radioText}>
+                  The estimated hourly rate is $20/hour to $30/hour
+                </Text>
+              </Space>
+            </Radio.Group>
 
             <Button
               style={{
@@ -140,112 +254,48 @@ export default function JopPosting({ nextForm, next }) {
               <Button size="large" onClick={back}>
                 Back
               </Button>
-              <Button size="large" disabled onClick={contineu}>
+              <Button size="large" onClick={contineu}>
                 Continue
               </Button>
             </div>
-          </div>
-        </>
-      );
-    case 2:
-      return (
-        <>
-          <div style={{ marginTop: "4rem" }}>
-            <Title strong-level={2}>Skills and experience level</Title>
-            <div>
-              <Form layout="vertical">
-                <Form.Item label="Title">
-                  <Search placeholder="input search text" enterButton />
-                  <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                    For attracting freelancers select 3 to 5 skills.
-                  </Text>
-                </Form.Item>
-              </Form>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Text orientation="left" style={{ marginBottom: "1rem" }}>
-                  Select skills required for
-                  <span className={styles.span}> UX/UI Design </span> job
-                </Text>
-                <Space size={[0, 8]}>
-                  <Tag>magenta</Tag>
-                  <Tag>red</Tag>
-                  <Tag>volcano</Tag>
-                  <Tag>orange</Tag>
-                  <Tag>gold</Tag>
-                  <Tag>lime</Tag>
-                  <Tag>green</Tag>
-                  <Tag>cyan</Tag>
-                  <Tag>blue</Tag>
-                  <Tag>geekblue</Tag>
-                  <Tag>purple</Tag>
-                </Space>
-              </div>
-              <div>
-                <Title style={{ textAlign: "left" }}>Experience Level</Title>
-                <Paragraph style={{ maxWidth: "28rem" }}>
-                  What level of experience is required for your
-                  <span className={styles.span}> UX/UI Design </span>
-                  job?
-                  <span style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                    You will still receive proposals from freelancers having
-                    different level of expertise. But this helps us in matching
-                    your job with the right freelancers.
-                  </span>
-                </Paragraph>
-                <Radio.Group style={{ marginBottom: "3rem" }}>
-                  <Space direction="vertical">
-                    <Radio value={1}>Beginner (Relatively new)</Radio>
-                    <Text className={styles.radioText}>
-                      May have no to 2 years of experience
-                    </Text>
-                    <Radio value={2}>Intermediate (Notable experience)</Radio>
-                    <Text className={styles.radioText}>
-                      May have 2 to 5 years of experience
-                    </Text>
 
-                    <Radio value={3}>Expert (In-depth experience)</Radio>
-                    <Text className={styles.radioText}>
-                      May have 5 to 10+ years of experience
-                    </Text>
-                  </Space>
-                </Radio.Group>
-              </div>
+            {/* icon for mobile   */}
 
-              <Button
-                style={{ marginBottom: "2rem", border: "none", color: "blue" }}
-              >
-                See examples of great jobs
-              </Button>
-
-              <div className={styles.btn}>
-                <Button size="large" onClick={back}>
-                  Back
-                </Button>
-                <Button size="large" onClick={contineu}>
-                  Continue
-                </Button>
-              </div>
+            <div className={styles.mobileDisplay}>
+              <Divider style={{ marginBottom: ".7rem" }}></Divider>
+              <Row>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HomeOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <MessageOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <BellOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HeartOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+              </Row>
             </div>
+
+            {/* end */}
           </div>
         </>
       );
     case 3:
       return (
         <>
-          <div
-            style={{
-              marginTop: "4rem",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Title strong-level={2}> Project Duration</Title>
+          <div className={styles.jobSection}>
+            <Title level={3} style={{ marginTop: "0rem" }}>
+              Project Duration
+            </Title>
 
             <Text style={{ color: "rgba(0, 0, 0, 0.45)" }}>
               What is the estimated duration of your project?
             </Text>
 
-            <Radio.Group style={{ marginTop: "2rem" }}>
+            <Radio.Group style={{ marginTop: "2rem", display: "block" }}>
               <Space direction="vertical">
                 <Radio value={1}>
                   More then 6 months (Large and complex project)
@@ -258,34 +308,49 @@ export default function JopPosting({ nextForm, next }) {
                 </Radio>
               </Space>
             </Radio.Group>
-            <Button
-              style={{
-                marginTop: "10rem",
-                marginBottom: "2rem",
-                border: "none",
-                color: "blue",
-                maxWidth: "10rem",
-              }}
-            >
-              See examples of great jobs
-            </Button>
-
-            <div className={styles.btn}>
-              <Button size="large" onClick={back}>
-                Back
-              </Button>
+            <div className={styles.btnGroup}>
               <Button
-                size="large"
-                onClick={nextForm}
                 style={{
-                  marginBottom: "0rem",
-                  background: "#1D8EA4",
-                  color: "white",
+                  marginBottom: "2rem",
+                  border: "none",
+                  marginLeft: "-1rem",
                 }}
               >
-                Next buget
+                <Text className={styles.btnText}>
+                  See examples of great jobs
+                </Text>
               </Button>
+
+              <div className={styles.button} style={{ justifyContent: "end" }}>
+                <Button size="large" onClick={back}>
+                  Back
+                </Button>
+                <Button size="large" onClick={nextForm}>
+                  Next: Budget
+                </Button>
+              </div>
             </div>
+            {/* icon for mobile   */}
+
+            <div className={styles.mobileDisplay}>
+              <Divider style={{ marginBottom: ".7rem" }}></Divider>
+              <Row>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HomeOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <MessageOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <BellOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+                <Col xs={6} style={{ textAlign: "center" }}>
+                  <HeartOutlined style={{ fontSize: "1.5rem" }} />
+                </Col>
+              </Row>
+            </div>
+
+            {/* end */}
           </div>
         </>
       );
